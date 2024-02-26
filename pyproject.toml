@@ -63,6 +63,24 @@ ignore = ["D203", "D213"] # conflicting
 [tool.ruff.pydocstyle]
 convention = "numpy"
 
+[tool.mypy]
+# Docs: https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
+python_version = "3.11"
+warn_unused_configs = true
+warn_return_any = false
+namespace_packages = false
+files = ["src/josh"]
+exclude = "src/tests"
+
+[[tool.mypy.overrides]]
+module = ["josh.*"]
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["setuptools", "setuptools_scm"]
+ignore_missing_imports = true
+
+
 [tool.pytest.ini_options]
 # Docs: https://docs.pytest.org/en/7.1.x/reference/customize.html#pyproject-toml
 minversion = "6.0"
