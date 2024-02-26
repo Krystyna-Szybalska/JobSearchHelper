@@ -39,10 +39,10 @@ dev = [
 [tool.setuptools]
 zip-safe = false
 package-dir = { "" = "src" }
-packages = ["job_search"]
+packages = ["josh"]
 
 [tool.setuptools.dynamic]
-version = { attr = "job_search.version.__version__" }
+version = { attr = "josh.version.__version__" }
 
 [tool.setuptools.package-data]
 
