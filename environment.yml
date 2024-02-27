@@ -1,0 +1,9 @@
+# This is an example Conda environment, for local development
+name: job-search
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -e ".[dev]"

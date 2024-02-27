@@ -1,0 +1,87 @@
+# Python project/package configuration
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm[toml]>=8.0", "wheel>=0.41"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Repository = "https://github.com/Krystyna-Szybalska/JobSearchHelper"
+Issues = "https://github.com/Krystyna-Szybalska/JobSearchHelper/issues"
+
+[project]
+name = "job_search_helper"
+description = "Job search automation."
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    # Build system
+    "setuptools>=61",
+    "setuptools-scm[toml]>=8.0",
+    "wheel>=0.41",
+    # Dev tools
+    "pre-commit==3.6.2",
+    # Code quality
+    "ruff==0.2.2",
+    "mypy==1.8.0",
+    "pytest==8.0.2",
+]
+# Later, we can add docs with mkdocs
+
+[project.scripts]
+# TODO: Add scripts to run things.
+
+[tool.setuptools]
+zip-safe = false
+package-dir = { "" = "src" }
+packages = ["josh"]
+
+[tool.setuptools.dynamic]
+version = { attr = "josh.version.__version__" }
+
+[tool.setuptools.package-data]
+
+[tool.setuptools_scm]
+
+[tool.ruff]
+line-length = 105
+src = ["src"]
+select = [
+    "E", # pycodestyle
+    "F", # pyflakes
+    # "UP", # pyupgrade
+    "D", # pydocstyle
+]
+ignore = ["D203", "D213"] # conflicting
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+[tool.mypy]
+# Docs: https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
+python_version = "3.11"
+warn_unused_configs = true
+warn_return_any = false
+namespace_packages = false
+files = ["src/josh"]
+exclude = "src/tests"
+
+[[tool.mypy.overrides]]
+module = ["josh.*"]
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["setuptools", "setuptools_scm"]
+ignore_missing_imports = true
+
+
+[tool.pytest.ini_options]
+# Docs: https://docs.pytest.org/en/7.1.x/reference/customize.html#pyproject-toml
+minversion = "6.0"
+testpaths = ["src/tests"]
