@@ -17,7 +17,7 @@ requires-python = ">=3.10"
 dynamic = ["version"]
 
 license = { file = "LICENSE" }
-dependencies = []
+dependencies = ["beautifulsoup4~=4.12.3", "requests~=2.31.0", "lxml~=5.1.0"]
 
 [project.optional-dependencies]
 dev = [
@@ -31,6 +31,10 @@ dev = [
     "ruff==0.3.1",
     "mypy==1.8.0",
     "pytest==8.0.2",
+    # Type stubs 
+    "lxml-stubs",
+    "types-beautifulsoup4",
+    "types-requests",
 ]
 # Later, we can add docs with mkdocs
 
