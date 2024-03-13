@@ -27,10 +27,15 @@ for raw_elem in raw_elems:
     soup_i = bs4.BeautifulSoup(etree.tostring(raw_elem), "html.parser")
     a_i = soup_i.contents[0]
     assert isinstance(a_i, bs4.Tag)
+
+    # Get URL (href)
     partial_url_i = a_i['href']
     full_url_i = f"{base_url}{partial_url_i}"
 
+    # Get label for the offer
+
     result_i = {
+        "label": a_i.get("aria-label", "NO LABEL"),
         "full_url": full_url_i,
     }
     results.append(result_i)
