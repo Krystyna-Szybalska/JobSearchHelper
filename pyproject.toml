@@ -30,7 +30,7 @@ dev = [
     # Code quality
     "ruff==0.3.1",
     "mypy==1.8.0",
-    "pytest==8.0.2",
+    "pytest==8.1.1",
 ]
 # Later, we can add docs with mkdocs
 
