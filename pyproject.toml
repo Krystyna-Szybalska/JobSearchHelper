@@ -29,7 +29,7 @@ dev = [
     "pre-commit==3.6.2",
     # Code quality
     "ruff==0.3.1",
-    "mypy==1.8.0",
+    "mypy==1.9.0",
     "pytest==8.0.2",
 ]
 # Later, we can add docs with mkdocs
